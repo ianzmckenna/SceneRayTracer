@@ -64,7 +64,6 @@ class Sphere {
 		this.material = material;
 	}
 	intersect(ray, tmin, tmax) {
-		// ===YOUR CODE STARTS HERE===
 		let O = ray.o.clone();
 		let A = 1;
 		let B = O.sub(this.C).multiplyScalar(2).dot(ray.d); // 2(O - C) . d
@@ -92,7 +91,6 @@ class Sphere {
 		isect.normal = ray.pointAt(t).sub(this.C).normalize();
 		isect.material = this.material;
 		return isect;
-		// ---YOUR CODE ENDS HERE---
 	}
 }
 
@@ -107,16 +105,9 @@ class Triangle {
 		if(n0) this.n0 = n0.clone();
 		if(n1) this.n1 = n1.clone();
 		if(n2) this.n2 = n2.clone();
-
-		// below you may pre-compute any variables that are needed for intersect function
-		// such as the triangle normal etc.
-		// ===YOUR CODE STARTS HERE===
-
-		// ---YOUR CODE ENDS HERE---
 	} 
 
 	intersect(ray, tmin, tmax) {
-		// ===YOUR CODE STARTS HERE===
 		let P2_P0 = this.P2.clone().sub(this.P0);
 		let P2_P1 = this.P2.clone().sub(this.P1);
 		let m1 = new THREE.Matrix3();
@@ -128,8 +119,8 @@ class Triangle {
 		// cant find a method thatll do matrix vector multiplication correctly...
 		// decided to do it on my own
 		let tAB = new THREE.Vector3((m1.elements[0] * P2_O.x) + (m1.elements[1] * P2_O.y) + (m1.elements[2] * P2_O.z),
-			                        (m1.elements[3] * P2_O.x) + (m1.elements[4] * P2_O.y) + (m1.elements[5] * P2_O.z),
-								    (m1.elements[6] * P2_O.x) + (m1.elements[7] * P2_O.y) + (m1.elements[8] * P2_O.z));
+					    (m1.elements[3] * P2_O.x) + (m1.elements[4] * P2_O.y) + (m1.elements[5] * P2_O.z),
+					    (m1.elements[6] * P2_O.x) + (m1.elements[7] * P2_O.y) + (m1.elements[8] * P2_O.z));
 		let t = tAB.x;
 		let alpha = tAB.y;
 		let beta = tAB.z;
@@ -151,7 +142,6 @@ class Triangle {
 		}	
 		isect.material = this.material;
 		return isect;
-		// ---YOUR CODE ENDS HERE---
 	}
 }
 
@@ -173,8 +163,3 @@ function shapeLoadOBJ(objstring, material, smoothnormal) {
 		}
 	}, function() {}, function() {});
 }
-
-/* ========================================
- * You can define additional Shape classes,
- * as long as each implements intersect function.
- * ======================================== */
