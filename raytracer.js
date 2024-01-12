@@ -60,7 +60,6 @@ function render() {
  * If intersection material has non-null kr or kt, perform recursive ray tracing. */
 function raytracing(ray, depth) {
 	let color = new THREE.Color(0,0,0);
-	// ===YOUR CODE STARTS HERE===
 	let isect = rayIntersectScene(ray);
 	if (isect != null) {
 		if (isect.material.kr != null || isect.material.kt != null) {
@@ -91,13 +90,11 @@ function raytracing(ray, depth) {
 	else {
 		return backgroundColor;
 	}
-	// ---YOUR CODE ENDS HERE---
 }
 
 /* Compute and return shading color given a ray and the intersection point structure. */
 function shading(ray, isect) {
 	let color = new THREE.Color(0,0,0);
-	// ===YOUR CODE STARTS HERE===
 	for (let j = 0; j < lights.length; j++) {
 		let light = lights[j].getLight(isect.position);
 		let shadowRay = new Ray(isect.position, light.direction);
@@ -125,7 +122,6 @@ function shading(ray, isect) {
 			}
 		}
 	}
-	// ---YOUR CODE ENDS HERE---
 	return color;
 }
 
