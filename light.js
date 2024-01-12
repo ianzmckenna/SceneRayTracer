@@ -47,7 +47,6 @@ class SpotLight {
 		this.cutoff = cutoff;
 	}
 	getLight(shadingPoint) {
-		// ===YOUR CODE STARTS HERE===
 		let dir = this.to.clone().sub(this.from).normalize();
 		let l = shadingPoint.clone().sub(this.from).normalize();
 		let cos_alpha = dir.dot(l);
@@ -63,7 +62,6 @@ class SpotLight {
 			ls.intensity = new THREE.Color(0, 0, 0);
 		}
 		return ls;
-		// ---YOUR CODE ENDS HERE---
 	}
 }
 
@@ -77,8 +75,3 @@ function createAreaLight(center, size, intensity, Ns) {
 		}
 	}
 }
-
-/* ========================================
- * You can define additional Light classes,
- * as long as each implements getLight function.
- * ======================================== */
