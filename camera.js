@@ -45,8 +45,3 @@ class PinholeCamera {
 		return new Ray(this.eye, direction);
 	}
 }
-
-/* ========================================
- * You can define additional Camera classes,
- * as long as each implements getCameraRay function.
- * ======================================== */
